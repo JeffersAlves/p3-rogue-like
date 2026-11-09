@@ -1,34 +1,44 @@
 import { useNavigate } from "react-router-dom";
-import { useGame } from "../contexts/GameContext";
 
-export const MainMenuPage = () => {
+export function MainMenuPage() {
   const navigate = useNavigate();
-  const { saveData, resetGame } = useGame();
 
   return (
     <main className="shell">
-      <section className="panel hero-panel">
-        <p className="eyebrow">Persona 3 • Tartarus</p>
-        <h1>Descend into the Abyss</h1>
+      <section className="hero">
+        <p className="brand">Ricochet Run</p>
+        <h1>Bounce. Burn. Don&apos;t shoot yourself.</h1>
         <p className="lede">
-          A dark, client-side roguelike blending Tartarus exploration,
-          turn-based battle, and Persona fusion-inspired progression.
+          A 2D platformer rogue-like where bullets ricochet off walls, living
+          enemies, and corpses — including your own fire.
         </p>
         <div className="actions">
-          <button type="button" onClick={() => navigate("/create")}>
-            Begin Journey
-          </button>
-          <button type="button" onClick={() => resetGame()}>
-            Reset Save
+          <button
+            type="button"
+            className="btn primary"
+            onClick={() => navigate("/play")}
+          >
+            Start Run
           </button>
         </div>
-        <div className="status-card">
-          <h2>Current Save</h2>
-          <p>Protagonist: {saveData.player.name}</p>
-          <p>Floor: {saveData.game.floor}</p>
-          <p>Phase: {saveData.game.phase}</p>
-        </div>
+        <ul className="controls">
+          <li>
+            <kbd>A</kbd>/<kbd>D</kbd> or arrows — move
+          </li>
+          <li>
+            <kbd>W</kbd>/<kbd>Space</kbd> — jump
+          </li>
+          <li>
+            <kbd>J</kbd> or click — shoot
+          </li>
+          <li>
+            <kbd>Enter</kbd> — claim upgrade / continue
+          </li>
+          <li>
+            <kbd>R</kbd> — restart run from zero
+          </li>
+        </ul>
       </section>
     </main>
   );
-};
+}

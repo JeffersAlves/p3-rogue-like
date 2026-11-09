@@ -1,32 +1,43 @@
-# React + TypeScript + Vite
+# Ricochet Run (p3-rogue-like)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+2D platformer rogue-like MVP. Bullets **ricochet** off terrain, living enemies, and corpses. Friendly fire is always on. Death wipes the run.
 
-Currently, two official plugins are available:
+## Play
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Open the local URL Vite prints (usually `http://localhost:5173`), then click **Start Run**.
+
+### Controls
+
+| Input | Action |
+| --- | --- |
+| A / D or ← → | Move |
+| W / Space / ↑ | Jump |
+| J or mouse click | Shoot |
+| Enter | Claim upgrade / continue |
+| R | Restart run from zero |
+
+### Build
+
+```bash
+npm run build
+npm run preview
+```
+
+## MVP features
+
+- Move, jump, shoot through 4 rooms
+- Bullets bounce on walls/floors (never stop on terrain)
+- Bullets damage + ricochet on living enemies; corpses become solid bounce surfaces
+- Friendly fire (including your own bullets, after a tiny muzzle grace)
+- Rogue-like wipe on death (no meta-progression)
+- Weapon upgrades: Extended Mag, Piercing, Hollow Points (stop on enemy), Incendiary (fire trail)
+- HUD: HP, ammo, active upgrades, room status
+
+## Stack
+
+React + TypeScript + Vite, canvas renderer (no Phaser dependency).
